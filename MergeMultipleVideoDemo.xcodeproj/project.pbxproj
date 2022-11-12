@@ -16,6 +16,9 @@
 		F238F737291F6B5500202896 /* MergeMultipleVideoDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F736291F6B5500202896 /* MergeMultipleVideoDemoTests.swift */; };
 		F238F741291F6B5500202896 /* MergeMultipleVideoDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F740291F6B5500202896 /* MergeMultipleVideoDemoUITests.swift */; };
 		F238F743291F6B5500202896 /* MergeMultipleVideoDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F742291F6B5500202896 /* MergeMultipleVideoDemoUITestsLaunchTests.swift */; };
+		F238F750291F6B7600202896 /* VideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F74F291F6B7600202896 /* VideoEditor.swift */; };
+		F238F754291F812400202896 /* movie.mov in Resources */ = {isa = PBXBuildFile; fileRef = F238F753291F812400202896 /* movie.mov */; };
+		F238F756291F821100202896 /* IMG_1802.MOV in Resources */ = {isa = PBXBuildFile; fileRef = F238F755291F821100202896 /* IMG_1802.MOV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		F238F73C291F6B5500202896 /* MergeMultipleVideoDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MergeMultipleVideoDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F238F740291F6B5500202896 /* MergeMultipleVideoDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeMultipleVideoDemoUITests.swift; sourceTree = "<group>"; };
 		F238F742291F6B5500202896 /* MergeMultipleVideoDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeMultipleVideoDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F238F74F291F6B7600202896 /* VideoEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditor.swift; sourceTree = "<group>"; };
+		F238F753291F812400202896 /* movie.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie.mov; sourceTree = "<group>"; };
+		F238F755291F821100202896 /* IMG_1802.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_1802.MOV; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,8 @@
 		F238F71E291F6B5300202896 /* MergeMultipleVideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F238F753291F812400202896 /* movie.mov */,
+				F238F755291F821100202896 /* IMG_1802.MOV */,
 				F238F71F291F6B5300202896 /* AppDelegate.swift */,
 				F238F721291F6B5300202896 /* SceneDelegate.swift */,
 				F238F723291F6B5300202896 /* ViewController.swift */,
@@ -106,6 +114,7 @@
 				F238F728291F6B5500202896 /* Assets.xcassets */,
 				F238F72A291F6B5500202896 /* LaunchScreen.storyboard */,
 				F238F72D291F6B5500202896 /* Info.plist */,
+				F238F74F291F6B7600202896 /* VideoEditor.swift */,
 			);
 			path = MergeMultipleVideoDemo;
 			sourceTree = "<group>";
@@ -232,7 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F238F72C291F6B5500202896 /* LaunchScreen.storyboard in Resources */,
+				F238F754291F812400202896 /* movie.mov in Resources */,
 				F238F729291F6B5500202896 /* Assets.xcassets in Resources */,
+				F238F756291F821100202896 /* IMG_1802.MOV in Resources */,
 				F238F727291F6B5300202896 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +271,7 @@
 			files = (
 				F238F724291F6B5300202896 /* ViewController.swift in Sources */,
 				F238F720291F6B5300202896 /* AppDelegate.swift in Sources */,
+				F238F750291F6B7600202896 /* VideoEditor.swift in Sources */,
 				F238F722291F6B5300202896 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

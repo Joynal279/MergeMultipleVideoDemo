@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
+    var editor = VideoEditor()
+    var assetArray: [AVAsset] = [
+                                AVAsset(url: URL(fileURLWithPath: Bundle.main.path(forResource: "movie", ofType:"mov")!)),
+                                 AVAsset(url: URL(fileURLWithPath: Bundle.main.path(forResource: "IMG_1802", ofType:"MOV")!))]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        editor.makeVideoComposition(fromVideoAt: assetArray) { playerItem in
+            print("Composition completed")
+        }
     }
 
 
