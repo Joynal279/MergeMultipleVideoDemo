@@ -18,7 +18,8 @@
 		F238F743291F6B5500202896 /* MergeMultipleVideoDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F742291F6B5500202896 /* MergeMultipleVideoDemoUITestsLaunchTests.swift */; };
 		F238F750291F6B7600202896 /* VideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F238F74F291F6B7600202896 /* VideoEditor.swift */; };
 		F238F754291F812400202896 /* movie.mov in Resources */ = {isa = PBXBuildFile; fileRef = F238F753291F812400202896 /* movie.mov */; };
-		F238F756291F821100202896 /* IMG_1802.MOV in Resources */ = {isa = PBXBuildFile; fileRef = F238F755291F821100202896 /* IMG_1802.MOV */; };
+		F238F756291F821100202896 /* ssss.mov in Resources */ = {isa = PBXBuildFile; fileRef = F238F755291F821100202896 /* ssss.mov */; };
+		F26CFDE02921D65100CAD9FA /* pointFilm.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F26CFDDF2921D65100CAD9FA /* pointFilm.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,8 @@
 		F238F742291F6B5500202896 /* MergeMultipleVideoDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeMultipleVideoDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F238F74F291F6B7600202896 /* VideoEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditor.swift; sourceTree = "<group>"; };
 		F238F753291F812400202896 /* movie.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie.mov; sourceTree = "<group>"; };
-		F238F755291F821100202896 /* IMG_1802.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_1802.MOV; sourceTree = "<group>"; };
+		F238F755291F821100202896 /* ssss.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = ssss.mov; sourceTree = "<group>"; };
+		F26CFDDF2921D65100CAD9FA /* pointFilm.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = pointFilm.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +107,9 @@
 		F238F71E291F6B5300202896 /* MergeMultipleVideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F26CFDDF2921D65100CAD9FA /* pointFilm.mp4 */,
 				F238F753291F812400202896 /* movie.mov */,
-				F238F755291F821100202896 /* IMG_1802.MOV */,
+				F238F755291F821100202896 /* ssss.mov */,
 				F238F71F291F6B5300202896 /* AppDelegate.swift */,
 				F238F721291F6B5300202896 /* SceneDelegate.swift */,
 				F238F723291F6B5300202896 /* ViewController.swift */,
@@ -243,7 +246,8 @@
 				F238F72C291F6B5500202896 /* LaunchScreen.storyboard in Resources */,
 				F238F754291F812400202896 /* movie.mov in Resources */,
 				F238F729291F6B5500202896 /* Assets.xcassets in Resources */,
-				F238F756291F821100202896 /* IMG_1802.MOV in Resources */,
+				F238F756291F821100202896 /* ssss.mov in Resources */,
+				F26CFDE02921D65100CAD9FA /* pointFilm.mp4 in Resources */,
 				F238F727291F6B5300202896 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

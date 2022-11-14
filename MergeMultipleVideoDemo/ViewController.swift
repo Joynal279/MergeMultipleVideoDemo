@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     var editor = VideoEditor()
     var assetArray: [AVAsset] = [
                                 AVAsset(url: URL(fileURLWithPath: Bundle.main.path(forResource: "movie", ofType:"mov")!)),
-                                 AVAsset(url: URL(fileURLWithPath: Bundle.main.path(forResource: "IMG_1802", ofType:"MOV")!))]
+                                 AVAsset(url: URL(fileURLWithPath: Bundle.main.path(forResource: "pointFilm", ofType:"mp4")!))
+                                ]
     override func viewDidLoad() {
         super.viewDidLoad()
         

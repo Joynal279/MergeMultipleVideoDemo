@@ -15,6 +15,7 @@ class VideoEditor {
     let mainInstruction = AVMutableVideoCompositionInstruction()
     var allVideoInstruction = [AVMutableVideoCompositionLayerInstruction]()
     var startDuration: CMTime = .zero
+    var progressTimer = Timer()
     
     func makeVideoComposition(fromVideoAt videoAsset: [AVAsset], onComplete: @escaping (AVPlayerItem?) -> Void) {
         
@@ -28,39 +29,41 @@ class VideoEditor {
                 let currentInstruction: AVMutableVideoCompositionLayerInstruction = compositionLayerInstruction(for: currentTrack!, assetTrack: assetTrack)
                 allVideoInstruction.append(currentInstruction)
                 startDuration = CMTimeAdd(startDuration, currentAsset.duration)
+                currentInstruction.setOpacity(0, at: startDuration)
                 
             } catch {
                 print("❌ Error_Loading_ Video")
             }
-            
-            //******* Start Calculate Video Asset Size ***********//
-            let videoTrack = mixComposition.tracks(withMediaType: .video)[0]
-            let trackSize = videoTrack.naturalSize
-            //set ration here
-            //YouTube: 16:9 (max upload 4k – 3840 x 2160)
-            //width: 16 and height: 9
-            let rect = AVMakeRect(aspectRatio: CGSize(width: 1, height: 1), insideRect: CGRect(origin: .zero, size: CGSize(width: trackSize.width, height: trackSize.height)))
-            
-            //******* End Calculate Video Asset Size ***********//
-            
-            mainInstruction.timeRange = CMTimeRangeMake(start: .zero, duration: startDuration)
-            mainInstruction.layerInstructions = allVideoInstruction
-            
-            mainComposition.instructions = [mainInstruction]
-            mainComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
-            mainComposition.renderSize = rect.size
-            
-            //exportVideo
-            exportVideo(mixComposition: mixComposition, mainComposition: mainComposition)
-            
-            ///Prepare playerView
-            let item = AVPlayerItem(asset: self.mixComposition)
-            //item.audioMix = self.mix
-            item.videoComposition = self.mainComposition
-            
-            onComplete(item)
-            
         }
+        
+        //******* Start Calculate Video Asset Size ***********//
+        let videoTrack = mixComposition.tracks(withMediaType: .video)[0]
+        let trackSize = videoTrack.naturalSize
+        //set ration here
+        //YouTube: 16:9 (max upload 4k – 3840 x 2160)
+        //width: 16 and height: 9
+        let rect = AVMakeRect(aspectRatio: CGSize(width: 1, height: 1), insideRect: CGRect(origin: .zero, size: CGSize(width: trackSize.width, height: trackSize.height)))
+        
+        //******* End Calculate Video Asset Size ***********//
+        
+        mainInstruction.timeRange = CMTimeRangeMake(start: .zero, duration: startDuration)
+        mainInstruction.layerInstructions = allVideoInstruction
+        
+        mainComposition.instructions = [mainInstruction]
+        mainComposition.frameDuration = CMTimeMake(value: 1, timescale: 30)
+        mainComposition.renderSize = rect.size
+        
+        //exportVideo
+        exportVideo(mixComposition: mixComposition, mainComposition: mainComposition)
+        
+        ///Prepare playerView
+        let item = AVPlayerItem(asset: self.mixComposition)
+        //item.audioMix = self.mix
+        item.videoComposition = self.mainComposition
+        
+        onComplete(item)
+        
+        
     }
     
     private func compositionLayerInstruction(for track: AVCompositionTrack, assetTrack: AVAssetTrack) -> AVMutableVideoCompositionLayerInstruction {
@@ -91,6 +94,17 @@ class VideoEditor {
         // Check exist and remove old file
         FileManager.default.removeItemIfExisted(movieDestinationUrl as URL)
         
+        //exporting progress value
+        guard assetExport != nil else {return}
+        progressTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            let p = Double(assetExport!.progress)
+            print("progress: \(p)")
+            if(assetExport!.progress >= 0.99)
+            {
+                self.progressTimer.invalidate()
+            }
+        }
+        
         assetExport?.outputURL = movieDestinationUrl as URL
         assetExport?.exportAsynchronously(completionHandler: {
             switch assetExport!.status {
@@ -100,6 +114,15 @@ class VideoEditor {
             case AVAssetExportSession.Status.cancelled:
                 print("cancelled")
                 print(assetExport?.error ?? "unknown error")
+            case AVAssetExportSession.Status.completed:
+                print("✅export complete and saved")
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: movieDestinationUrl as URL)
+                }) { saved, error in
+                    if saved {
+                        print("Saved")
+                    }
+                }
             default:
                 print("Movie complete")
                 
